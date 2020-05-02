@@ -4,9 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const data_1 = require("./data/data");
 const app = express_1.default();
 app.get("/", (req, res, next) => {
-    res.send("hello world from typescript");
+    res.send(data_1.DataStore.tours);
 });
 app.get("/tours", (req, res, next) => {
     res.send("tours here!");

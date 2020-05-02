@@ -1,9 +1,8 @@
 import express from 'express';
-
+import {DataStore} from './data/data'
 const app = express();
-
 app.get("/", (req, res, next) => {
-    res.send("hello world from typescript");
+    res.send(DataStore.tours);
 });
 app.get("/tours", (req, res, next) => {
     res.send("tours here!")
