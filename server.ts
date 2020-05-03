@@ -1,15 +1,17 @@
-import express from 'express';
-import {DataStore} from './data/data'
+import express from "express";
+import bodyParser from "body-parser";
+import { apiGetTours } from "./api/tours/apiGetTours";
+import { apiGetToursDetails } from "./api/tours/apiGetToursDetails";
+import { apiCreateTours } from "./api/tours/apiCreateTours";
 const app = express();
+const jsonParser = bodyParser.json();
 app.get("/", (req, res, next) => {
-    res.send(DataStore.tours);
+  res.send("typescript with node is awesome");
 });
-app.get("/tours", (req, res, next) => {
-    res.send("tours here!")
-})
-app.post("/tours", (req, res, next) => {
-    res.send("add tours here!")
-})
+app.use(bodyParser.urlencoded({ extended: true }));
+app.get("/tours", apiGetTours);
+app.get("/tours/:id", apiGetToursDetails);
+app.post("/tours", jsonParser, apiCreateTours);
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`server started at port: ${PORT}`))
+app.listen(PORT, () => console.log(`server started at port: ${PORT}`));

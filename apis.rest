@@ -1,0 +1,14 @@
+GET http://localhost:5000
+
+###
+GET http://localhost:5000/tours
+
+###
+POST http://localhost:5000/tours
+Content-Type: application/json
+
+{
+    "location": "cairo",
+    "tourTitle": "best city ever"
+}
+
